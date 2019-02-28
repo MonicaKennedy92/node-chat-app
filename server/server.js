@@ -51,11 +51,12 @@ socket.broadcast.emit('newMessage', generateMessage('Admin','New User joined')/*
 
 
 
-socket.on('createMessage',(newMessage) => {
+socket.on('createMessage',(newMessage,callback) => {
   console.log('createMessage',newMessage);
 
 
 io.emit('newMessage',generateMessage(newMessage.from,newMessage.text));
+callback('This is from the server');
   // io.emit('newMessage',{
   //   from: newMessage.from,
   //   text:newMessage.text,

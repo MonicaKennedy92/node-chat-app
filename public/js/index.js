@@ -23,3 +23,10 @@ socket.on('disconnect', function ()  {
 socket.on('newMessage',function (email) {
   console.log('New Message',email);
 });
+
+socket.emit('createMessage',{
+  from:'sofi.ken@rediffmail.com',
+  text:'hey sofi'
+}, function(data) {
+  console.log('Got it',data);
+});
