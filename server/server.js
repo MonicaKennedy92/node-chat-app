@@ -35,13 +35,39 @@ console.log('New user connected');
 //   console.log('createEmail',newEmail);
 // });
 
+socket.emit('newMessage', {
+  from: 'Admin',
+  text:'Welcome to the chat application',
+  createdAt: new Date().getTime()
+});
+
+
+socket.broadcast.emit('newMessage', {
+  from: 'Admin',
+  text:'New User joined',
+  createdAt: new Date().getTime()
+})
+
+
+
 socket.on('createMessage',(newMessage) => {
   console.log('createMessage',newMessage);
-  io.emit('newMessage',{
-    from: newMessage.from,
-    text:newMessage.text,
-    createdAt:new Date().getTime()
-  });
+
+  // io.emit('newMessage',{
+  //   from: newMessage.from,
+  //   text:newMessage.text,
+  //   createdAt:new Date().getTime()
+  // });
+
+
+
+  //Broadcast
+
+  // socket.broadcast.emit('newMessage',{
+  //   from: newMessage.from,
+  //     text:newMessage.text,
+  //     createdAt:new Date().getTime()
+  // });
 });
 socket.on('disconnect',() => {
   console.log('User was disconnect');
