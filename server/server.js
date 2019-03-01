@@ -63,8 +63,6 @@ callback('This is from the server');
   //   createdAt:new Date().getTime()
   // });
 
-
-
   //Broadcast
 
   // socket.broadcast.emit('newMessage',{
